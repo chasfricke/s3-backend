@@ -6,6 +6,7 @@ const database = require('./db/database-connection')
 const morgan = require('morgan')
 
 const files = require('./routes/files')
+const s3 = require('./routes/s3')
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan(process.env.NODE_ENV !== 'production' ? 'dev' : 'combined'))
 
 app.use('/files', files)
+app.use('/upload', s3)
 
 
 
