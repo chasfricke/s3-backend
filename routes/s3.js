@@ -21,6 +21,8 @@ const upload = multer({
     s3, // The s3 instance from above
     // The name of your S3 bucket
     bucket: process.env.S3_BUCKET_NAME,
+    // remove contentType if you want file to automatically download
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     key: (request, file, next) => {
       // This names the file. This example prepends the
       // UNIX timestamp to original name of the file,
